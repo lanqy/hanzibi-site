@@ -1,41 +1,68 @@
 <!doctype html>
 <html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>汉字笔 技术支持</title><style>
-:root { --bg:#FBF7EF; --card:#FFFFFF; --text:#1C1C1E; --sec:#6B6B70; --accent:#C62828; --line:#E8DFD0; }
-@media (prefers-color-scheme: dark) { :root { --bg:#141615; --card:#1E2120; --text:#F2F2EE; --sec:#A0A3A0; --accent:#EF5350; --line:#2C302E; } }
+:root { --bg:#FBF7EF; --card:#FFFFFF; --text:#1C1C1E; --sec:#6B6B70; --accent:#C62828; --line:#E8DFD0; --chip:#F1E9DC; }
+@media (prefers-color-scheme: dark) { :root { --bg:#141615; --card:#1E2120; --text:#F2F2EE; --sec:#A0A3A0; --accent:#EF5350; --line:#2C302E; --chip:#2A2E2C; } }
 * { box-sizing: border-box; }
 body { margin:0; background:var(--bg); color:var(--text); font: 16px/1.75 -apple-system, "PingFang SC", "Noto Sans SC", "Helvetica Neue", sans-serif; }
-main { max-width: 720px; margin: 0 auto; padding: 48px 20px 64px; }
+main { max-width: 720px; margin: 0 auto; padding: 40px 16px 64px; }
 header { display:flex; align-items:center; gap:14px; margin-bottom: 28px; }
-.logo { width:52px; height:52px; border-radius:12px; background:var(--card); border:2px solid var(--accent); display:flex;
+.logo { flex:none; width:52px; height:52px; border-radius:12px; background:var(--card); border:2px solid var(--accent); display:flex;
         align-items:center; justify-content:center; font-size:30px; color:var(--accent); font-weight:700; }
 h1 { font-size: 26px; margin: 0; line-height:1.3; }
 .sub { color: var(--sec); font-size: 14px; }
+.lang { margin-left:auto; display:flex; background:var(--chip); border-radius:999px; padding:3px; flex:none; }
+.lang button { border:0; background:transparent; color:var(--sec); font:inherit; font-size:14px; padding:4px 12px; border-radius:999px; cursor:pointer; }
+.lang button[aria-pressed="true"] { background:var(--card); color:var(--text); font-weight:600; box-shadow:0 1px 3px rgba(0,0,0,.12); }
 section { background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin: 16px 0; }
 h2 { font-size: 18px; margin: 0 0 8px; }
 p, li { margin: 6px 0; }
 ul { padding-left: 1.2em; margin: 6px 0; }
 a { color: var(--accent); }
 footer { color: var(--sec); font-size: 13px; margin-top: 28px; text-align:center; }
+[data-lang] { display:none; }
+html[lang="zh-Hans"] [data-lang="zh"], html[lang="en"] [data-lang="en"] { display:revert; }
+@media (max-width: 480px) { header { flex-wrap: wrap; } .lang { margin-left: 66px; } }
 </style></head>
-<body><main>
-<header><div class="logo">笔</div><div><h1>汉字笔 技术支持</h1><div class="sub">汉字笔顺笔画学习 · iPhone / iPad / Mac</div></div></header>
+<body data-title-zh="汉字笔 技术支持" data-title-en="HanziBi Support"><main>
+<header><div class="logo">笔</div>
+<div><h1><span data-lang="zh">汉字笔 技术支持</span><span data-lang="en">HanziBi Support</span></h1>
+<div class="sub"><span data-lang="zh">汉字笔顺笔画学习 · iPhone / iPad / Mac</span><span data-lang="en">Chinese stroke order · iPhone / iPad / Mac</span></div></div>
+<div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh" aria-pressed="true">中文</button><button type="button" data-set="en" aria-pressed="false">English</button></div>
+</header>
+<section data-lang="zh"><h2>联系我们</h2><p>使用中遇到问题，或者发现某个字的笔顺、笔画名称不对，请发邮件到 <a href="mailto:lanqy.me@gmail.com">lanqy.me@gmail.com</a>。如果方便，请附上汉字、设备型号和系统版本，我们会尽快回复。</p></section>
+<section data-lang="en"><h2>Contact us</h2><p>If something isn’t working, or a character’s stroke order or stroke name looks wrong, email <a href="mailto:lanqy.me@gmail.com">lanqy.me@gmail.com</a>. Please include the character, your device model and system version if you can. We’ll reply as soon as possible.</p></section>
+<section data-lang="zh"><h2>常见问题</h2><p><strong>需要联网吗？</strong><br>不需要。9000 多个汉字的笔顺数据都内置在 App 里，离线也能正常使用。</p><p><strong>描红练习总是判定写错？</strong><br>请按笔顺从起笔写到收笔，方向不要反；笔画大致落在灰色字形上即可，不需要写得完全一样。同一笔连续写错 3 次后会自动显示提示。</p><p><strong>笔画名称好像不准确？</strong><br>笔画名称是程序根据书写轨迹自动识别的，个别复杂笔画（例如横折弯钩、横撇弯钩）可能有偏差，笔顺动画本身不受影响。欢迎来信反馈。</p><p><strong>怎么打印字帖？</strong><br>点“生成字帖”，选择“范字字帖”或“空白练字纸”，调整版式后点“打印”，或点“导出 PDF”保存文件。</p><p><strong>支持哪些语言？</strong><br>App 界面支持简体中文、English、日本語和한국어，会跟随系统语言自动切换。</p><p><strong>没有声音？</strong><br>请检查设备的静音开关和音量，以及“设置 &gt; 练习”中的音效开关是否开启。</p></section>
+<section data-lang="en"><h2>FAQ</h2><p><strong>Do I need an internet connection?</strong><br>No. Stroke data for more than 9,000 characters is built into the app, so it works fully offline.</p><p><strong>Tracing practice keeps marking my strokes wrong.</strong><br>Write each stroke in the correct direction, from its start to its end. It only needs to roughly follow the gray outline. After three wrong attempts on the same stroke, a hint appears.</p><p><strong>A stroke name looks wrong.</strong><br>Stroke names are detected automatically from the writing path, so a few complex strokes may be named incorrectly. The stroke-order animation itself is not affected. Feedback is welcome.</p><p><strong>How do I print a worksheet?</strong><br>Tap “Make worksheet”, choose “Model worksheet” or “Blank grid paper”, adjust the layout, then tap “Print” or “Export PDF”.</p><p><strong>Which languages are supported?</strong><br>The app is available in Simplified Chinese, English, Japanese and Korean, and follows your device language.</p><p><strong>There’s no sound.</strong><br>Check your device’s silent switch and volume, and make sure sound is turned on in Settings &gt; Practice.</p></section>
+<section data-lang="zh"><h2>隐私</h2><p>本 App 不收集任何个人数据，详见 <a href="privacy-policy.html">隐私政策</a>。</p></section>
+<section data-lang="en"><h2>Privacy</h2><p>The app collects no personal data. See the <a href="privacy-policy.html?lang=en">privacy policy</a>.</p></section>
+<section data-lang="zh"><h2>致谢</h2><p>笔画与字典数据来自开源项目 <a href="https://github.com/skishore/makemeahanzi">Make Me a Hanzi</a>，分别遵循 Arphic Public License 与 LGPL。</p></section>
+<section data-lang="en"><h2>Credits</h2><p>Stroke and dictionary data come from the open-source <a href="https://github.com/skishore/makemeahanzi">Make Me a Hanzi</a> project, under the Arphic Public License and the LGPL.</p></section>
 
-<section><h2>联系我们</h2>
-<p>使用中遇到问题，或者发现某个字的笔顺、笔画名称不对，请发邮件到 <a href="mailto:lanqy.me@gmail.com">lanqy.me@gmail.com</a>。如果方便，请附上汉字、设备型号和系统版本，我们会尽快回复。</p></section>
-
-<section><h2>常见问题</h2>
-<p><strong>需要联网吗？</strong><br>不需要。9000 多个汉字的笔顺数据都内置在 App 里，离线也能正常使用。</p>
-<p><strong>描红练习总是判定写错？</strong><br>请按笔顺从起笔写到收笔，方向不要反；笔画大致落在灰色字形上即可，不需要写得完全一样。同一笔连续写错 3 次后会自动显示提示。</p>
-<p><strong>笔画名称好像不准确？</strong><br>笔画名称是程序根据书写轨迹自动识别的，个别复杂笔画（例如横折弯钩、横撇弯钩）可能有偏差，笔顺动画本身不受影响。欢迎来信反馈，我们会持续改进。</p>
-<p><strong>怎么打印字帖？</strong><br>在任意汉字页或首页点“生成字帖”，选择“范字字帖”或“空白练字纸”，调整版式后点“打印”，或点“导出 PDF”保存文件。</p>
-<p><strong>没有声音？</strong><br>请检查设备的静音开关和音量，以及“设置 &gt; 练习 &gt; 书写正确 / 错误音效”是否开启。</p></section>
-
-<section><h2>隐私</h2>
-<p>本 App 不收集任何个人数据，详见 <a href="privacy-policy.html">隐私政策</a>。</p></section>
-
-<section><h2>致谢</h2>
-<p>笔画与字典数据来自开源项目 <a href="https://github.com/skishore/makemeahanzi">Make Me a Hanzi</a>，分别遵循 Arphic Public License 与 LGPL。</p></section>
-
-<footer>© 2026 lanqy · 汉字笔</footer>
-</main></body></html>
+<footer>© 2026 lanqy · <span data-lang="zh">汉字笔</span><span data-lang="en">HanziBi</span></footer>
+</main><script>
+(function () {
+  var html = document.documentElement;
+  function pick() {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'zh') return q;
+    try { var s = localStorage.getItem('hanzibi-lang'); if (s === 'en' || s === 'zh') return s; } catch (e) {}
+    var langs = navigator.languages || [navigator.language || 'en'];
+    return /^zh/i.test(langs[0] || '') ? 'zh' : 'en';
+  }
+  function apply(l) {
+    html.lang = l === 'zh' ? 'zh-Hans' : 'en';
+    document.title = document.body.getAttribute('data-title-' + l);
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.set === l));
+    });
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      try { localStorage.setItem('hanzibi-lang', b.dataset.set); } catch (e) {}
+      apply(b.dataset.set);
+    });
+  });
+  apply(pick());
+})();
+</script></body></html>
